@@ -1,8 +1,4 @@
 # ESE 3060 Part 1: CutMix Augmentation Study
-
-**Author:** Evelyn Fung
-**Date:** December 8, 2024
-
 ## Summary
 
 Tested CutMix augmentation on airbench94 across 460 experimental runs. 
