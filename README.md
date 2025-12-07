@@ -1,6 +1,6 @@
 # ESE 3060 Part 1: CutMix Augmentation Study
 
-**Author:** Evelyn [Your Last Name]  
+**Author:** Evelyn Fung
 **Date:** December 8, 2024
 
 ## Summary
@@ -70,8 +70,3 @@ All experiments logged with random seeds, git commits, GPU info, and full hyperp
   year={2019}
 }
 ```
-
-## Author
-
-Evelyn [Last Name] - ESE 3060 Fall 2024  
-University of Pennsylvania
