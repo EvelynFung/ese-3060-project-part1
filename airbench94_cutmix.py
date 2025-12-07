@@ -18,7 +18,7 @@ import numpy as np
 
 torch.backends.cudnn.benchmark = True
 
-# ===== ADDED: CutMix Implementation =====
+# CutMix Implementation 
 def cutmix_data(inputs, labels, alpha=1.0):
     """
     Apply CutMix augmentation.
@@ -58,7 +58,6 @@ def cutmix_data(inputs, labels, alpha=1.0):
     lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (W * H))
     
     return inputs, labels, labels[index], lam
-# ===== END CutMix Implementation =====
 
 hyp = {
     'opt': {
@@ -74,8 +73,8 @@ hyp = {
     'aug': {
         'flip': True,
         'translate': 2,
-        'cutmix_alpha': 1.0,  # ADDED: CutMix alpha parameter
-        'cutmix_prob': 0.5,   # ADDED: Probability of applying CutMix
+        'cutmix_alpha': 1.0,  # CutMix alpha parameter
+        'cutmix_prob': 0.5,   # Probability of applying CutMix
     },
     'net': {
         'widths': {
@@ -388,7 +387,7 @@ def main(run, cutmix_prob=0.5, cutmix_alpha=1.0):
         
         model.train()
         for inputs, labels in train_loader:
-            # ===== MODIFIED: Apply CutMix with probability =====
+            # Apply CutMix with probability
             if torch.rand(1).item() < cutmix_prob:
                 inputs, labels_a, labels_b, lam = cutmix_data(inputs, labels, cutmix_alpha)
                 outputs = model(inputs)
@@ -396,7 +395,6 @@ def main(run, cutmix_prob=0.5, cutmix_alpha=1.0):
             else:
                 outputs = model(inputs)
                 loss = loss_fn(outputs, labels).sum()
-            # ===== END MODIFICATION =====
             
             optimizer.zero_grad(set_to_none=True)
             loss.backward()
